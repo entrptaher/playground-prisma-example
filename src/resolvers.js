@@ -37,7 +37,19 @@ const resolvers = {
     }
   },
   Subscription: {
+    user: {
+      // Example of using prisma-binding
+      subscribe: async (parent, args, context, info) => {
+        return context.prisma.subscription.user(
+          {
+            mutation_in: ["CREATED", "UPDATED"]
+          },
+          info
+        );
+      }
+    },
     userAdded: {
+      // example of using pub-sub from graphql-subscriptions
       subscribe: (root, args, ctx, info) => {
         return pubsub.asyncIterator(USER_ADDED_TOPIC);
       }

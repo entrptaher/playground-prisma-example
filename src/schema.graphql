@@ -1,7 +1,3 @@
 #import * from './generated/prisma.graphql'
+#import Query from './generated/prisma.graphql'
 #import Mutation from './generated/prisma.graphql'
-
-type Query {
-  products: [Product!]!
-  transactions: [Transaction!]!
-}

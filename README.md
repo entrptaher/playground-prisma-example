@@ -35,3 +35,66 @@ yarn start
 
 ## Step 5: Enjoy
 Open browser and go to the playground at http://localhost:4000
+
+# Queries
+
+Get all users
+```graphql
+query users {
+  users {
+    id
+    name
+  }
+}
+```
+
+# Mutations
+```graphql
+# Create a user
+mutation createUser{
+  createUser(name: "POI"){
+    id
+    name
+  }
+}
+
+# Update a user by id
+mutation updateUser{
+  updateUser(id: "cjwuaubca8d2j0b05hd22o9ih", name: "Bob Max") {
+    id
+    name
+  }
+}
+```
+
+# Subscriptions
+The following subscriptions are implemented with pub-sub,
+```graphql
+subscription userAdded {
+  userAdded {
+    id
+    name
+  }
+}
+
+subscription userUpdated {
+  userUpdated {
+    id
+    name
+  }
+}
+```
+
+The following is implemented with prisma-binding, it's a bit different then prisma-client on the resolver file,
+```graphql
+subscription user{
+  user{
+    mutation
+    node{
+      id
+      name
+    }
+    updatedFields
+  }
+}
+```

@@ -97,23 +97,6 @@ mutation updateProduct {
 ```
 
 # Subscriptions
-The following subscriptions are implemented with pub-sub,
-```graphql
-subscription userAdded {
-  userAdded {
-    id
-    name
-  }
-}
-
-subscription userUpdated {
-  userUpdated {
-    id
-    name
-  }
-}
-```
-
 The following is implemented with prisma-binding, it's a bit different then prisma-client on the resolver file,
 ```graphql
 subscription product{

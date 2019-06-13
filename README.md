@@ -133,6 +133,9 @@ subscription transaction{
       id
     }
     updatedFields
+    previousValues{
+      id
+    }
   }
 }
 ```

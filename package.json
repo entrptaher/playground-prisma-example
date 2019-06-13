@@ -4,7 +4,7 @@
   "description": "Minimal Prisma example with GraphQL Yoga",
   "main": "index.js",
   "scripts": {
-    "start": "dotenv -e .env node src/index.js",
+    "start": "dotenv -e .env nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Prisma",
@@ -14,6 +14,7 @@
     "graphql-cli": "^3.0.11",
     "graphql-subscriptions": "^1.1.0",
     "graphql-yoga": "^1.17.4",
+    "nodemon": "^1.19.1",
     "prisma": "^1.34.0",
     "prisma-binding": "^2.3.12"
   }

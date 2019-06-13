@@ -1,4 +1,10 @@
-type User {
+type Product {
   id: ID! @id
-  name: String!
+  transactions: [Transaction!]! @relation(link: INLINE)
+}
+
+type Transaction {
+  id: ID! @id
+  quantity: Int!
+  time: DateTime
 }

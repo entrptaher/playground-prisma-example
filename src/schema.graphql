@@ -1,3 +1,4 @@
 #import * from './generated/prisma.graphql'
 #import Query from './generated/prisma.graphql'
 #import Mutation from './generated/prisma.graphql'
+#import Subscription from './generated/prisma.graphql'

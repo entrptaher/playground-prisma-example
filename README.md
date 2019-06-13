@@ -38,31 +38,60 @@ Open browser and go to the playground at http://localhost:4000
 
 # Queries
 
-Get all users
+Get all products
 ```graphql
-query users {
-  users {
+query Products {
+  products{
     id
-    name
+    transactions{
+      id
+      time
+      quantity
+    }
+  }
+}
+```
+
+Get one specific product by id
+```graphql
+query Product {
+  product(where: {id: "5d02172924aa9a00070bc5b6"}){
+    id
+    transactions{
+      id
+      time
+      quantity
+    }
   }
 }
 ```
 
 # Mutations
 ```graphql
-# Create a user
-mutation createUser{
-  createUser(name: "POI"){
+# Create a product
+mutation createProduct {
+  createProduct(data: { }) {
     id
-    name
+    transactions {
+      id
+      quantity
+      time
+    }
   }
 }
 
-# Update a user by id
-mutation updateUser{
-  updateUser(id: "cjwuaubca8d2j0b05hd22o9ih", name: "Bob Max") {
+# Update a product by id
+mutation updateProduct {
+  updateProduct(
+    where: { id: "5d02172924aa9a00070bc5b6" }
+    data: { transactions: { create: { quantity: 50, time: "2018-01-26T06:16:12.123Z" } } }
+  ) {
     id
-    name
+    transactions {
+      id
+      time
+      quantity
+    }
   }
 }
 ```
@@ -87,12 +116,21 @@ subscription userUpdated {
 
 The following is implemented with prisma-binding, it's a bit different then prisma-client on the resolver file,
 ```graphql
-subscription user{
-  user{
+subscription product{
+  product{
     mutation
     node{
       id
-      name
+    }
+    updatedFields
+  }
+}
+
+subscription transaction{
+  transaction{
+    mutation
+    node{
+      id
     }
     updatedFields
   }
